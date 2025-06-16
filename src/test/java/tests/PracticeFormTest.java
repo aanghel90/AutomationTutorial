@@ -146,7 +146,6 @@ public class PracticeFormTest {
         Assert.assertEquals(tableDescriptionList.get(2).getText(), "Gender", "Gender is not displayed right in the table");
         Assert.assertEquals(tableValueList.get(2).getText(), genderValue, "Gender is not displayed right in the table");
 
-
         driver.quit();
     }
 
