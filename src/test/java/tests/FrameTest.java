@@ -6,26 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.sql.Driver;
 import java.time.Duration;
 
-public class FrameTest {
-    public WebDriver driver;
+public class FrameTest extends SharedData {
 
     @Test
     public void testMethod() {
-        //deschidem o instanta de Chrome
-        driver = new ChromeDriver();
-
-        //accesam o pagina specifica
-        driver.get("https://demoqa.com");
-
-        //facem browserul sa fie in modul maximize
-        driver.manage().window().maximize();
-
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
 

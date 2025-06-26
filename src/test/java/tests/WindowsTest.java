@@ -6,23 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowsTest {
-    public WebDriver driver;
+public class WindowsTest extends SharedData {
 
     @Test
     public void testMethod() {
-        //deschidem o instanta de Chrome
-        driver = new ChromeDriver();
-
-        //accesam o pagina specifica
-        driver.get("https://demoqa.com");
-
-
-        driver.manage().window().maximize();
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
 

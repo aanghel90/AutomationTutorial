@@ -6,22 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
+import sharedData.SharedData;
 
 import java.util.List;
 
-public class WebTableTest {
-    public WebDriver driver;
+public class WebTableTest extends SharedData {
 
     @Test
     public void testMethod(){
-        //deschidem o instanta de Chrome
-        driver = new ChromeDriver();
-
-        //accesam o pagina specifica
-        driver.get("https://demoqa.com");
-
-        //facem browserul sa fie in modul maximize
-        driver.manage().window().maximize();
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
 
