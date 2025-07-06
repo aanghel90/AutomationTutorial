@@ -36,19 +36,19 @@ public class PracticeFormTest extends SharedData {
 
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         String firstNameValue = "Adina";
-        firstNameElement.sendKeys(firstNameValue);
+        elementHelper.fillElement(firstNameElement,firstNameValue);
 
         WebElement lastNameElement = driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
         String lastNameValue = "Anghel";
-        lastNameElement.sendKeys(lastNameValue);
+        elementHelper.fillElement(lastNameElement, lastNameValue);
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='name@example.com']"));
         String emailValue = "test@test.com";
-        emailElement.sendKeys(emailValue);
+        elementHelper.fillElement(emailElement, emailValue);
 
         WebElement mobileElement = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-        String mobileValue = "0755555201";
-        mobileElement.sendKeys(mobileValue);
+        String mobileValue = "0761231452";
+        elementHelper.fillElement(mobileElement, mobileValue);
 
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
        /* String subjectsValue = "Accounting";
@@ -60,8 +60,8 @@ public class PracticeFormTest extends SharedData {
 
         List<String> subjectsValue = Arrays.asList("Accounting", "Arts", "Maths");
         for (int index = 0; index < subjectsValue.size(); index++) {
-            subjectsElement.sendKeys(subjectsValue.get(index));
-            subjectsElement.sendKeys(Keys.ENTER);
+            elementHelper.fillElement(subjectsElement, subjectsValue.get(index));
+            elementHelper.pressElement(subjectsElement, Keys.ENTER);
         }
 
         String genderValue = "Female";
@@ -98,12 +98,12 @@ public class PracticeFormTest extends SharedData {
         //daca nu merge cu relativ path, extragem absolut path=>
         File file = new File(uploadValue);
         String absolutePath = file.getAbsolutePath();
-        uploadElement.sendKeys(absolutePath);
+        elementHelper.fillElement(uploadElement, absolutePath);
 
         // address
         WebElement currentAddressElement = driver.findElement(By.id("currentAddress"));
         String currentAddressValue = "Str Narciselor, bl B, Sc C";
-        currentAddressElement.sendKeys(currentAddressValue);
+        elementHelper.fillElement(currentAddressElement, currentAddressValue);
 
         //de verificat aici excecuteScript
         WebElement stateElement = driver.findElement(By.id("state"));
@@ -111,13 +111,13 @@ public class PracticeFormTest extends SharedData {
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "Haryana";
-        stateInputElement.sendKeys(stateValue);
-        stateInputElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(stateInputElement, stateValue);
+        elementHelper.pressElement(stateInputElement, Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Karnal";
-        cityElement.sendKeys(cityValue);
-        cityElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(cityElement, cityValue);
+        elementHelper.pressElement(cityElement, Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         elementHelper.clickElement(submitElement);

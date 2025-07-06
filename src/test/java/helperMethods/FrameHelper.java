@@ -1,6 +1,8 @@
 package helperMethods;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class FrameHelper {
     public WebDriver driver;
@@ -9,11 +11,15 @@ public class FrameHelper {
         this.driver = driver;
     }
 
-    public void switchToFrameByString(String frameName){
+    public void switchToFrameByElement(WebElement element) {
+        driver.switchTo().frame(element);
+    }
+
+    public void switchToFrameByString(String frameName) {
         driver.switchTo().frame(frameName);
     }
 
-    public void switchToParentFrame(){
+    public void switchToParentFrame() {
         driver.switchTo().parentFrame();
     }
 }

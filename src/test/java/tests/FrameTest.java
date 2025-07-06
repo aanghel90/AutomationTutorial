@@ -27,9 +27,10 @@ public class FrameTest extends SharedData {
         WebElement framesElements = driver.findElement(By.xpath("//span[text()='Frames']"));
         elementHelper.ckickJSElement(framesElements);
 
-        frameHelper.switchToFrameByString("frame1");
+        //frameHelper.switchToFrameByString("frame1");
         //cu alti locators
-        // driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='frame1']")));
+        frameHelper.switchToFrameByElement(driver.findElement(By.xpath("//iframe[@id='frame1']")));
+        //driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='frame1']")));
         WebElement firstBlockElement = driver.findElement(By.id("sampleHeading"));
         elementHelper.printTextElement(firstBlockElement);
 
@@ -39,7 +40,6 @@ public class FrameTest extends SharedData {
 
         WebElement secondBlockElement = driver.findElement(By.id("sampleHeading"));
         elementHelper.printTextElement(secondBlockElement);
-
 
     }
 }

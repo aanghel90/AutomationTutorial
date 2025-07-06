@@ -26,7 +26,7 @@ public class SharedData {
 
     }
 
-    @AfterMethod
+  @AfterMethod
     public void clearEnvironment(){
         driver.quit();
     }
