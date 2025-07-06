@@ -19,4 +19,8 @@ public class ElementHelper {
     public void clickElement(WebElement element){
         element.click();
     }
+
+    public void printTextElement(WebElement element){
+        System.out.println(element.getText());
+    }
 }
