@@ -1,5 +1,7 @@
 package tests;
 
+import helperMethods.ElementHelper;
+import helperMethods.PageHelper;
 import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,14 +20,15 @@ public class PracticeFormTest extends SharedData {
 
     @Test
     public void testMethod() {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
 
+        ElementHelper elementHelper = new ElementHelper(driver);
+        PageHelper pageHelper = new PageHelper(driver);
 
         WebElement elementForms = driver.findElement(By.xpath("//h5[text()='Forms']"));
-        executor.executeScript("arguments[0].click();", elementForms);
+        elementHelper.ckickJSElement(elementForms);
 
         WebElement elementPracticeForm = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        executor.executeScript("arguments[0].click();", elementPracticeForm);
+        elementHelper.ckickJSElement(elementPracticeForm);
 
         // wait implicit
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -65,26 +68,25 @@ public class PracticeFormTest extends SharedData {
         List<WebElement> genderElementList = driver.findElements(By.cssSelector("div[id='genterWrapper']>div>div>label[class = 'custom-control-label']"));
         switch (genderValue) {
             case "Male":
-                genderElementList.get(0).click();
+                elementHelper.clickElement(genderElementList.get(0));
                 break;
             case "Female":
-                genderElementList.get(1).click();
+                elementHelper.clickElement(genderElementList.get(1));
                 break;
             case "Other":
-                genderElementList.get(2).click();
+                elementHelper.clickElement(genderElementList.get(2));
                 break;
         }
 
         // facem scroll in jos
         //val pozitive merge in jos
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)", "");
+        pageHelper.scrollPage(0,400);
 
         List<WebElement> hobbiesElementList = driver.findElements(By.cssSelector("div[id='hobbiesWrapper']>div>div>label[class='custom-control-label']"));
         List<String> hobbyValues = Arrays.asList("Reading", "Music");
         for (int index = 0; index < hobbiesElementList.size(); index++) {
             if (hobbyValues.contains(hobbiesElementList.get(index).getText())) {
-                hobbiesElementList.get(index).click();
+                elementHelper.clickElement(hobbiesElementList.get(index));
             }
         }
 
@@ -105,8 +107,7 @@ public class PracticeFormTest extends SharedData {
 
         //de verificat aici excecuteScript
         WebElement stateElement = driver.findElement(By.id("state"));
-        //js.executeScript("arguments[0].click();", stateElement);
-        stateElement.click();
+        elementHelper.clickElement(stateElement);
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "Haryana";
@@ -119,7 +120,7 @@ public class PracticeFormTest extends SharedData {
         cityElement.sendKeys(Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
-        submitElement.click();
+        elementHelper.clickElement(submitElement);
 
         // Wait Explicit
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -139,7 +140,6 @@ public class PracticeFormTest extends SharedData {
         Assert.assertEquals(tableDescriptionList.get(2).getText(), "Gender", "Gender is not displayed right in the table");
         Assert.assertEquals(tableValueList.get(2).getText(), genderValue, "Gender is not displayed right in the table");
 
-        driver.quit();
     }
 
 }
