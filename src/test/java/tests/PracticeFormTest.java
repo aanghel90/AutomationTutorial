@@ -33,7 +33,6 @@ public class PracticeFormTest extends SharedData {
         // wait implicit
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         String firstNameValue = "Adina";
         elementHelper.fillElement(firstNameElement,firstNameValue);
@@ -51,17 +50,9 @@ public class PracticeFormTest extends SharedData {
         elementHelper.fillElement(mobileElement, mobileValue);
 
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
-       /* String subjectsValue = "Accounting";
-        subjectsElement.sendKeys(subjectsValue);
-        subjectsElement.sendKeys(Keys.ENTER); */
-        /*String subjectsValue2 = "Ar";
-        subjectsElement.sendKeys(subjectsValue2);
-        subjectsElement.sendKeys(Keys.ENTER);*/
-
         List<String> subjectsValue = Arrays.asList("Accounting", "Arts", "Maths");
         for (int index = 0; index < subjectsValue.size(); index++) {
-            elementHelper.fillElement(subjectsElement, subjectsValue.get(index));
-            elementHelper.pressElement(subjectsElement, Keys.ENTER);
+            elementHelper.fillPressElement(subjectsElement, subjectsValue.get(index), Keys.ENTER);
         }
 
         String genderValue = "Female";
@@ -111,34 +102,51 @@ public class PracticeFormTest extends SharedData {
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "Haryana";
-        elementHelper.fillElement(stateInputElement, stateValue);
-        elementHelper.pressElement(stateInputElement, Keys.ENTER);
+        elementHelper.fillPressElement(stateInputElement, stateValue, Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Karnal";
-        elementHelper.fillElement(cityElement, cityValue);
-        elementHelper.pressElement(cityElement, Keys.ENTER);
+        elementHelper.fillPressElement(cityElement, cityValue, Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         elementHelper.clickElement(submitElement);
 
-        // Wait Explicit
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[1]")));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[2]")));
-
         List<WebElement> tableDescriptionList = driver.findElements(By.xpath("//table//td[1]"));
         List<WebElement> tableValueList = driver.findElements(By.xpath("//table//td[2]"));
 
-        Assert.assertEquals(tableDescriptionList.get(0).getText(), "Student Name", "Student Name is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(firstNameValue), "First Name text is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(lastNameValue), "Last Name text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(0),"Student Name");
+        elementHelper.validateElementContainsText(tableValueList.get(0), firstNameElement.getText());
+        elementHelper.validateElementContainsText(tableValueList.get(0), lastNameElement.getText());
 
-        Assert.assertEquals(tableDescriptionList.get(1).getText(), "Student Email", "Student Email is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(1).getText(), emailValue, "Student Email is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(1), "Student Email");
+        elementHelper.validateElementEqualsText(tableValueList.get(1), emailValue);
 
-        Assert.assertEquals(tableDescriptionList.get(2).getText(), "Gender", "Gender is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(2).getText(), genderValue, "Gender is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(2), "Gender");
+        elementHelper.validateElementEqualsText(tableValueList.get(2), genderValue);
+
+        // =====TEMA====//
+
+       elementHelper.validateElementEqualsText(tableDescriptionList.get(3), "Mobile");
+       elementHelper.validateElementEqualsText(tableValueList.get(3), mobileValue);
+
+       elementHelper.validateElementEqualsText(tableDescriptionList.get(5), "Subjects");
+        String resultSubjects = String.join(", ", subjectsValue);
+        elementHelper.validateElementEqualsText(tableValueList.get(5), resultSubjects);
+
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(6), "Hobbies");
+        String resultHobbies = String.join(", ", hobbyValues);
+        elementHelper.validateElementEqualsText(tableValueList.get(6), resultHobbies);
+
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(7), "Picture");
+        String uploadValueName = "turn.jpg";
+        elementHelper.validateElementEqualsText(tableValueList.get(7), uploadValueName);
+
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(8), "Address");
+        elementHelper.validateElementEqualsText(tableValueList.get(8), currentAddressValue);
+
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(9), "State and City");
+        elementHelper.validateElementContainsText(tableValueList.get(9), stateValue);
+        elementHelper.validateElementContainsText(tableValueList.get(9), stateValue);
 
     }
 
