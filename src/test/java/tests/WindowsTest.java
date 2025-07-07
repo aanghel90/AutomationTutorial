@@ -36,7 +36,7 @@ public class WindowsTest extends SharedData {
         tabHelper.switchToSpecificTab(0);
 
         WebElement newWindowElement = driver.findElement(By.id("windowButton"));
-        elementHelper.clickElement(newWindowElement);
+        elementHelper.ckickJSElement(newWindowElement);
 
         tabHelper.switchToSpecificTab(1);
         tabHelper.closeCurrentTab();
