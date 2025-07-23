@@ -17,13 +17,13 @@ public class FramesPage extends BasePage {
     @FindBy(id = "sampleHeading")
     private WebElement secondBlockElement;
 
-    public void dealWithBigIFrame(){
+    public void dealWithBigIFrame() {
         frameHelper.switchToFrameByElement(driver.findElement(By.xpath("//iframe[@id='frame1']")));
         elementHelper.printTextElement(firstBlockElement);
         frameHelper.switchToParentFrame();
     }
 
-    public void dealWithLittleIFrame(){
+    public void dealWithLittleIFrame() {
         frameHelper.switchToFrameByString("frame2");
         elementHelper.printTextElement(secondBlockElement);
     }

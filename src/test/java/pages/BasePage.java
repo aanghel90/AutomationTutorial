@@ -19,6 +19,6 @@ public class BasePage {
         frameHelper = new FrameHelper(driver);
         pageHelper = new PageHelper(driver);
         tabHelper = new TabHelper(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 }

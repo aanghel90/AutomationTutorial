@@ -49,7 +49,6 @@ public class PracticeFormsPage extends BasePage {
     private List<WebElement> tableValueList;
 
 
-
     public void fillEntireForm(String firstNameValue, String lastNameValue, String emailValue, String mobileValue, List<String> subjectsValue,
                                String genderValue, List<String> hobbyValues, String uploadValue, String currentAddressValue,
                                String stateValue, String cityValue) {
@@ -94,8 +93,8 @@ public class PracticeFormsPage extends BasePage {
     }
 
     public void validateFormValues(String firstNameValue, String lastNameValue, String emailValue, String genderValue, String mobileValue, List<String> subjectsValue,
-                                   List<String> hobbyValues, String filename, String currentAddressValue, String stateValue, String cityValue){
-        elementHelper.validateElementEqualsText(tableDescriptionList.get(0),"Student Name");
+                                   List<String> hobbyValues, String filename, String currentAddressValue, String stateValue, String cityValue) {
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(0), "Student Name");
         elementHelper.validateElementContainsText(tableValueList.get(0), firstNameValue);
         elementHelper.validateElementContainsText(tableValueList.get(0), lastNameValue);
 

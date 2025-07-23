@@ -6,16 +6,16 @@ import org.openqa.selenium.support.FindBy;
 
 import java.time.Duration;
 
-public class FormsPage extends BasePage{
+public class FormsPage extends BasePage {
 
     public FormsPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath= "//span[text()='Practice Form']")
+    @FindBy(xpath = "//span[text()='Practice Form']")
     private WebElement elementPracticeForm;
 
-    public void interactWithPracticeFormsSubmenu(){
+    public void interactWithPracticeFormsSubmenu() {
         elementHelper.ckickJSElement(elementPracticeForm);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }

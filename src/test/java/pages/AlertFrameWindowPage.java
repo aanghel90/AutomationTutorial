@@ -1,10 +1,11 @@
 package pages;
 
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AlertFrameWindowPage extends BasePage{
+public class AlertFrameWindowPage extends BasePage {
 
     public AlertFrameWindowPage(WebDriver driver) {
         super(driver);
@@ -17,11 +18,16 @@ public class AlertFrameWindowPage extends BasePage{
     @FindBy(xpath = "//span[text()='Browser Windows']")
     private WebElement elementBrowserWindows;
 
-    public void interactWithAlertsSubmenu(){
+    public void interactWithAlertsSubmenu() {
         elementHelper.ckickJSElement(alertsElements);
+        LoggerUtility.infoLog("The user clicks on Alerts Submenu");
     }
-    public void interactWithFramesSubmenu(){
+
+    public void interactWithFramesSubmenu() {
         elementHelper.ckickJSElement(framesElements);
     }
-    public void interactWithWindowsSubmenu(){ elementHelper.ckickJSElement(elementBrowserWindows);}
+
+    public void interactWithWindowsSubmenu() {
+        elementHelper.ckickJSElement(elementBrowserWindows);
+    }
 }
