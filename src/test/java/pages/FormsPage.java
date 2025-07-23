@@ -13,7 +13,7 @@ public class FormsPage extends BasePage{
     }
 
     @FindBy(xpath= "//span[text()='Practice Form']")
-    public WebElement elementPracticeForm;
+    private WebElement elementPracticeForm;
 
     public void interactWithPracticeFormsSubmenu(){
         elementHelper.ckickJSElement(elementPracticeForm);

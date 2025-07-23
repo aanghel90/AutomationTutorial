@@ -13,9 +13,9 @@ public class WindowsPage extends BasePage{
     }
 
     @FindBy(id = "tabButton")
-    public WebElement newTabElement;
+    private WebElement newTabElement;
     @FindBy(id = "windowButton")
-    public WebElement newWindowElement;
+    private WebElement newWindowElement;
 
     public void dealWithNewTab(){
         elementHelper.clickElement(newTabElement);

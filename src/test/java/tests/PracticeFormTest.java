@@ -13,17 +13,17 @@ public class PracticeFormTest extends SharedData {
 
     @Test
     public void testMethod() {
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithFormsMenu();
 
-        FormsPage formsPage = new FormsPage(driver);
+        FormsPage formsPage = new FormsPage(getDriver());
         formsPage.interactWithPracticeFormsSubmenu();
 
         String firstNameValue = "Adina";
         String lastNameValue = "Anghel";
         String emailValue = "test@test.com";
         String mobileValue = "0761231452";
-        List<String> subjectsValue = Arrays.asList("Accounting", "Arts", "Maths");
+        List<String> subjectsValue = Arrays.asList("Arts", "Maths");
         String genderValue = "Female";
         List<String> hobbyValues = Arrays.asList("Reading", "Music");
         String uploadValue = "src/test/resources/turn.jpg";
@@ -31,7 +31,7 @@ public class PracticeFormTest extends SharedData {
         String stateValue = "Haryana";
         String cityValue = "Karnal";
 
-        PracticeFormsPage practiceFormsPage = new PracticeFormsPage(driver);
+        PracticeFormsPage practiceFormsPage = new PracticeFormsPage(getDriver());
         practiceFormsPage.fillEntireForm(firstNameValue, lastNameValue, emailValue, mobileValue, subjectsValue, genderValue, hobbyValues, uploadValue, currentAddressValue,
                 stateValue, cityValue);
         practiceFormsPage.validateFormValues(firstNameValue, lastNameValue, emailValue, genderValue, mobileValue,
