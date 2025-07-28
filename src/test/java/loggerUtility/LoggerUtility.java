@@ -17,6 +17,9 @@ public class LoggerUtility {
     }
 
     // Error Step
+    public static void errorLog(String message){
+        logger.error(message);
+    }
 
     // Finish Test
     public static void finishTest(String testName){

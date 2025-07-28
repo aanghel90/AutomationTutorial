@@ -1,5 +1,6 @@
 package pages;
 
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,8 +53,9 @@ public class WebTablePage extends BasePage {
     public void addNewEntry(int tableSize, String firstNameValue, String lastNameValue, String emailValue, String ageValue,
                             String salaryValue, String departmentValue) {
         elementHelper.validateListSize(tableList, tableSize);
-
+        LoggerUtility.infoLog("The user validates that the table has " + tableSize + " rows");
         clickAddButton();
+        LoggerUtility.infoLog("The user clicks on add button");
         fillFirstName(firstNameValue);
         fillLastName(lastNameValue);
         fillEmail(emailValue);
@@ -63,6 +65,7 @@ public class WebTablePage extends BasePage {
         clickSubmit();
 
         elementHelper.validateListSize(tableList, tableSize + 1);
+        LoggerUtility.infoLog("The user validates that the table has " + tableSize+1 + " rows");
         elementHelper.validateElementContainsText(tableList.get(tableSize), firstNameValue);
         elementHelper.validateElementContainsText(tableList.get(tableSize), lastNameValue);
         elementHelper.validateElementContainsText(tableList.get(tableSize), emailValue);
@@ -95,71 +98,89 @@ public class WebTablePage extends BasePage {
 
     public void deleteNewEntry(int tableSize) {
         clickDeleteButton();
+        LoggerUtility.infoLog("The user removes new entry");
         elementHelper.validateListSize(tableList, tableSize);
     }
 
     public void clickAddButton() {
         elementHelper.clickElement(addElement);
+        LoggerUtility.infoLog("The user clicks on Add button");
     }
 
     public void fillFirstName(String firstNameValue) {
         elementHelper.fillElement(firstNameElement, firstNameValue);
+        LoggerUtility.infoLog("The user fills first name field with value: " + firstNameValue);
     }
 
     public void fillLastName(String lastNameValue) {
         elementHelper.fillElement(lastNameElement, lastNameValue);
+        LoggerUtility.infoLog("The user fills last name field with value: " + lastNameValue);
     }
 
     public void fillEmail(String emailValue) {
         elementHelper.fillElement(emailElement, emailValue);
+        LoggerUtility.infoLog("The user fills email field with value: " + emailValue);
     }
 
     public void fillAge(String ageValue) {
         elementHelper.fillElement(ageElement, ageValue);
+        LoggerUtility.infoLog("The user fills age field with value: " + ageValue);
     }
 
     public void fillSalary(String salaryValue) {
         elementHelper.fillElement(salaryElement, salaryValue);
+        LoggerUtility.infoLog("The user fills salary field with value: " + salaryValue);
     }
 
     public void fillDepartment(String departmentValue) {
         elementHelper.fillElement(departmentElement, departmentValue);
+        LoggerUtility.infoLog("The user fills department field with value: " + departmentValue);
     }
 
     public void clickSubmit() {
         elementHelper.clickElement(submitElement);
+        LoggerUtility.infoLog("The user clicks Submit");
     }
 
     public void clickEditButton() {
         elementHelper.ckickJSElement(editElement);
+        LoggerUtility.infoLog("The user clicks Edit");
     }
 
     public void fillEditFirstName(String firstNameValue) {
         elementHelper.clearFillElement(editFirstNameElement, firstNameValue);
+        LoggerUtility.infoLog("The user updates first name field with value: " + firstNameValue);
     }
 
     public void fillEditLastName(String lastNameValue) {
         elementHelper.clearFillElement(editLastNameElement, lastNameValue);
+        LoggerUtility.infoLog("The user updates last name field with value: " + lastNameValue);
     }
 
     public void fillEditEmail(String emailValue) {
         elementHelper.clearFillElement(editEmailElement, emailValue);
+        LoggerUtility.infoLog("The user updates email field with value: " + emailValue);
     }
 
     public void fillEditAge(String ageValue) {
         elementHelper.clearFillElement(editAgeElement, ageValue);
+        LoggerUtility.infoLog("The user updates age field with value: " + ageValue);
     }
 
     public void fillEditSalary(String salaryValue) {
         elementHelper.clearFillElement(editSalaryElement, salaryValue);
+        LoggerUtility.infoLog("The user updates salary field with value: " + salaryValue);
     }
 
     public void fillEditDepartment(String departmentValue) {
         elementHelper.clearFillElement(editDepartmentElement, departmentValue);
+        LoggerUtility.infoLog("The user updates department field with value: " + departmentValue);
     }
 
     public void clickDeleteButton() {
         elementHelper.ckickJSElement(deleteElement);
+        LoggerUtility.infoLog("The user clicks on Delete button");
+
     }
 
 
