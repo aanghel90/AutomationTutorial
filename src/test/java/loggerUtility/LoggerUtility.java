@@ -8,22 +8,22 @@ public class LoggerUtility {
 
     // Start Test
     public static void startTest(String testName){
-        logger.info("===== Execution started: " + testName + " =====");
+        logger.info(Thread.currentThread().getName() + " ===== Execution started: " + testName + " =====");
     }
 
     // Info Step
     public static void infoLog(String message){
-        logger.info(message);
+        logger.info(Thread.currentThread().getName() + " " + message);
     }
 
     // Error Step
     public static void errorLog(String message){
-        logger.error(message);
+        logger.error(Thread.currentThread().getName() + " " + message);
     }
 
     // Finish Test
     public static void finishTest(String testName){
-        logger.info("===== Execution finished: " + testName + " =====");
+        logger.info(Thread.currentThread().getName() + " ===== Execution finished: " + testName + " =====");
     }
 
 
