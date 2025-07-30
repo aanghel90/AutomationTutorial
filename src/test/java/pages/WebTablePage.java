@@ -64,8 +64,10 @@ public class WebTablePage extends BasePage {
         fillDepartment(departmentValue);
         clickSubmit();
 
+        int expectedTableSize = tableSize + 1;
+
         elementHelper.validateListSize(tableList, tableSize + 1);
-        LoggerUtility.infoLog("The user validates that the table has " + tableSize+1 + " rows");
+        LoggerUtility.infoLog("The user validates that the table has " + expectedTableSize + " rows");
         elementHelper.validateElementContainsText(tableList.get(tableSize), firstNameValue);
         elementHelper.validateElementContainsText(tableList.get(tableSize), lastNameValue);
         elementHelper.validateElementContainsText(tableList.get(tableSize), emailValue);
@@ -84,6 +86,7 @@ public class WebTablePage extends BasePage {
         fillEditSalary(editSalaryValue);
         fillEditDepartment(editDepartmentValue);
         clickSubmit();
+
 
         elementHelper.validateListSize(tableList, tableSize + 1);
 
