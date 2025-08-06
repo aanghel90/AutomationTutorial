@@ -22,6 +22,7 @@ public class FirefoxBrowser implements BrowserInterface{
 
     @Override
     public void configureBrowser() {
+        boolean cicd = Boolean.parseBoolean(System.getProperty("cicd"));
         firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("window-size=1680,1050");
         firefoxOptions.addArguments("--disable-gpu");
@@ -29,6 +30,9 @@ public class FirefoxBrowser implements BrowserInterface{
         firefoxOptions.addArguments("--disable-extensions");
         //edgeOptions.addArguments("--headless=new");
         firefoxOptions.addArguments("--incognito");
+        if(cicd){
+            firefoxOptions.addArguments("--headless=new");
+        }
     }
 
     public WebDriver getDriver() {
