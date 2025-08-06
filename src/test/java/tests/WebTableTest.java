@@ -4,10 +4,11 @@ import pages.ElementsPage;
 import pages.IndexPage;
 import pages.WebTablePage;
 import sharedData.SharedData;
+import suite.Suite;
 
 public class WebTableTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE, Suite.ELEMENT_SUITE})
     public void testMethod(){
         IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithElementsMenu();

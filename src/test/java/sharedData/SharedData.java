@@ -10,7 +10,7 @@ public class SharedData {
     private WebDriver driver;
     private String browser ;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void prepareEnvironment() {
         LoggerUtility.startTest(this.getClass().getSimpleName());
 
@@ -37,7 +37,7 @@ public class SharedData {
 
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void clearEnvironment(ITestResult result) {
         if(result.getStatus()==ITestResult.FAILURE){
             LoggerUtility.errorLog(result.getThrowable().getMessage());
